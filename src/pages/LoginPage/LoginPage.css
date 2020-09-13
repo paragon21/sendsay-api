@@ -1,0 +1,28 @@
+.login-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }     
+.login-page__logo {
+    margin-bottom: 20px;
+}
+
+.login-page__form {
+    margin-bottom: 20px;
+}
+
+.login-page__gitlink {
+    color: #999999;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    text-decoration: none;
+    transition: color .3s;
+
+}
+
+.login-page__gitlink:hover {
+    color: #bdbdbd;
+}
