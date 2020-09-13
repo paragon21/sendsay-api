@@ -26,7 +26,15 @@
     font-size: 18px;
     line-height: 30px;
     color: #0D0D0D;
+}
 
+.login-form__input_invalid {
+    border: 1px solid #CF2C00;
+    box-shadow: 0px 0px 5px rgba(207, 44, 0, 0.5);
+}
+
+.login-form__input:focus {
+    outline: rgba(0, 0, 0, 0.2);
 }
 
 .login-form__label {
@@ -53,6 +61,12 @@ label[for="sublogin"]::before {
     color: white;
     font-size: 16px;
     font-weight: 500;
+    overflow: hidden;
+}
+
+.login-form__button:focus {
+    border-color: transparent;
+    outline-color: transparent;
 }
 
 .login-form__button_disabled {
