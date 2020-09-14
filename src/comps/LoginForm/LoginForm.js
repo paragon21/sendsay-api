@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import FadeLoader from '@bit/davidhu2000.react-spinners.fade-loader';
 import Connector from '../../_services/connector'
 import './LoginForm.css'
+import LoadSpinner from '../LoadSpinner'
 
 const LoginForm = () => {
 
@@ -10,6 +11,7 @@ const LoginForm = () => {
     const [passwd, setPasswd] = useState({value: ''})
     const [disabledButtonStatus, setDisabledButtonStatus] = useState(true)
     const [loadingButtonStatus, setLoadingButtonStatus] = useState(false)
+    const [submitStatus, setSubmitStatus] = useState({err: false, err_text: ''})
 
     useEffect( () => {
         if (login.isValid && passwd.isValid) {
@@ -84,12 +86,32 @@ const LoginForm = () => {
         }       
     }
 
+    const errElement = (
+        <div className="login-form__error">
+            <div className="login-form__error-status">
+                <svg className="login-form__error-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g opacity="0.8">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CF2C00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 15H16" stroke="#CF2C00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9 9H9.01" stroke="#CF2C00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15 9H15.01" stroke="#CF2C00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                </svg>
+                <div className="login-form__error-title">Вход не вышел</div>
+            </div>
+            <div className="login-form__error-msg">{submitStatus.err_text}</div>
+        </div>
+    )
+
 
 
 
     return (
         <div className="login-form">
             <div className="login-form__text">API-консолька</div>
+            {/* Error messages here */}
+            { submitStatus.err ? errElement : null }
+            {/* Form starts here    */}
             <form onSubmit={formSubmitHandler} className="login-form__form">
                 <label className="login-form__label" htmlFor="login">Логин</label>
                 <input onChange={formChangeHandler} 
@@ -111,7 +133,7 @@ const LoginForm = () => {
                     //disabled={disabledButtonStatus ? true : false} 
                     className={disabledButtonStatus ? "login-form__button login-form__button_disabled" : "login-form__button"}
                 >
-                    {!loadingButtonStatus? "Войти": "Загрузка"}
+                    {!loadingButtonStatus? <LoadSpinner />: "Войти"}
                     {/* <FadeLoader radius={10} radiusUnit="px" margin="2px" color="white" width={3} height={9} style="left: 50;"  /> */}
                 </button>
             </form>

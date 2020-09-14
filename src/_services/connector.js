@@ -7,18 +7,19 @@ export default class Connector {
 
     async login(login, passwd, sublogin) {
         let answer
-        sublogin 
-        ?
+        if (sublogin) {
             answer = await this.sendsay.login({
                 login: String(login),
                 sublogin: String(sublogin),
                 password: String(passwd)
             })
-        :
+        } else {
             answer = await this.sendsay.login({
                 login: String(login),
                 password: String(passwd) 
             })
+        }            
         console.log(answer)
+        return answer
     }
 }

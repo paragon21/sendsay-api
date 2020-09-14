@@ -76,3 +76,31 @@ label[for="sublogin"]::before {
 .login-form__button:hover {
     cursor: pointer;
 }
+
+.login-form__error {
+    background: rgba(207, 44, 0, 0.1);
+    border-radius: 5px;
+    padding: 15px 12px;
+    margin-bottom: 20px;
+}
+
+.login-form__error-status {
+    display: flex;
+    color: #CF2C00;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.login-form__error-title {
+    margin-left: 10px;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.login-form__error-msg {
+    margin-left: 42px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #CF2C00;
+    opacity: 0.5;
+}
